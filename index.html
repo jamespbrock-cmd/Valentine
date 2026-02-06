@@ -28,7 +28,9 @@
       position: relative;
     }
 
-    .screen.active { display: block; }
+    .screen.active {
+      display: block;
+    }
 
     h1 {
       margin: 0 0 12px;
@@ -45,6 +47,7 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      position: relative;
     }
 
     button {
@@ -86,7 +89,9 @@
       background: #e6ffed;
     }
 
-    .result.show { display: block; }
+    .result.show {
+      display: block;
+    }
 
     .tiny {
       font-size: 12px;
@@ -128,40 +133,50 @@
     </div>
 
     <div class="result" id="result">
-      <h2 style="margin:0 0 6px;">HUZZAH</h2>
+      <h2 style="margin:0 0 6px;">HUZZAH 🎉</h2>
       <div id="details"></div>
       <p style="margin:10px 0 0;">Now you're mine 😈</p>
     </div>
 
-    <div class="tiny">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</div>
+    <div class="tiny">
+      ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️
+    </div>
   </div>
 
   <script>
-    // Make sure the DOM exists before attaching handlers
+    // Elements
     const screen1 = document.getElementById("screen1");
     const screen2 = document.getElementById("screen2");
     const continueBtn = document.getElementById("continue");
 
-    const result = document.getElementById("result");
-    const details = document.getElementById("details");
+    const yesBtn = document.getElementById("yes");
+    const yes2Btn = document.getElementById("yes2");
     const noBtn = document.getElementById("no");
 
-    // screen switching
+    const result = document.getElementById("result");
+    const details = document.getElementById("details");
+
+    // Screen switch
     continueBtn.addEventListener("click", () => {
       screen1.classList.remove("active");
       screen2.classList.add("active");
     });
 
-    function celebrate(extra) {
+    // Celebration
+    function celebrate(extraText) {
       result.classList.add("show");
-      details.textContent = extra || "I LOVE YOU SO MUCH";
+      details.textContent = extraText || "I LOVE YOU SO MUCH";
+
+      // Freeze No button after success
+      noBtn.textContent = "Too late 💘";
+      noBtn.style.pointerEvents = "none";
 
       let i = 0;
       const rain = setInterval(() => {
         const s = document.createElement("div");
         s.textContent = ["💘","💖","✨","🌹","🥰"][Math.floor(Math.random() * 5)];
         s.style.position = "fixed";
-        s.style.left = (Math.random() * 100) + "vw"; // keep it on-screen
+        s.style.left = Math.random() * 100 + "vw";
         s.style.top = "-20px";
         s.style.fontSize = (16 + Math.random() * 22) + "px";
         s.style.transition = "top 1.6s linear, transform 1.6s linear";
@@ -177,11 +192,27 @@
       }, 40);
     }
 
-    document.getElementById("yes").addEventListener("click", () => celebrate());
-    document.getElementById("yes2").addEventListener("click", () => celebrate("YES DUH OF COURSE ✨"));
+    yesBtn.addEventListener("click", () => celebrate());
+    yes2Btn.addEventListener("click", () => celebrate("YES DUH OF COURSE ✨"));
 
-    // playful dodge
+    // No button sass escalation
+    const noTexts = [
+      "No",
+      "Nice try",
+      "Be serious",
+      "That’s not an option",
+      "You’re funny",
+      "Absolutely not",
+      "Come on now",
+      "Okay stop 😭"
+    ];
+
+    let noCount = 0;
+
     noBtn.addEventListener("mouseenter", () => {
+      noBtn.textContent = noTexts[Math.min(noCount, noTexts.length - 1)];
+      noCount++;
+
       const card = screen2.getBoundingClientRect();
       const btn = noBtn.getBoundingClientRect();
       const maxX = card.width - btn.width - 20;
