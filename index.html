@@ -178,7 +178,7 @@
         s.style.position = "fixed";
         s.style.left = Math.random() * 100 + "vw";
         s.style.top = "-20px";
-        s.style.fontSize = (16 + Math.random() * 22) + "px";
+        s.style.fontSize = (25 + Math.random() * 22) + "px";
         s.style.transition = "top 1.6s linear, transform 1.6s linear";
         document.body.appendChild(s);
 
@@ -188,7 +188,7 @@
         });
 
         setTimeout(() => s.remove(), 1700);
-        if (++i > 35) clearInterval(rain);
+        if (++i > 400) clearInterval(rain);
       }, 40);
     }
 
