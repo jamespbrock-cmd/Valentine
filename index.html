@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valentine?</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; 
+           display:flex; min-height:100vh; align-items:center; justify-content:center; 
+           background: linear-gradient(135deg, #ffe0ec, #fff7d6); margin:0; }
+    .card { background: rgba(255,255,255,0.85); padding: 28px; border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12); max-width: 520px; width: 92%; }
+    h1 { margin: 0 0 10px; font-size: 28px; }
+    p { margin: 8px 0 18px; font-size: 16px; line-height: 1.35; }
+    .btns { display:flex; gap:10px; flex-wrap:wrap; }
+    button { border:0; padding: 12px 16px; border-radius: 12px; cursor:pointer;
+             font-weight:700; font-size: 15px; }
+    .yes { background:#ff4d6d; color:white; }
+    .yes2 { background:#ff8fab; color:#3a0010; }
+    .no { background:#f1f3f5; color:#333; position: relative; }
+    .result { margin-top: 16px; padding: 12px; border-radius: 12px; display:none; }
+    .result.show { display:block; background:#e6ffed; }
+    .tiny { font-size: 12px; color:#666; margin-top:14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="title">Hey you 🫶</h1>
+    <p id="msg">
+      I know we’re long-distance, so I made you a tiny button-powered moment:
+      will you be my Valentine?
+    </p>
+
+    <div class="btns">
+      <button class="yes" id="yes">Yes 💖</button>
+      <button class="yes2" id="yes2">Yes (with enthusiasm) ✨</button>
+      <button class="no" id="no">No</button>
+    </div>
+
+    <div class="result" id="result">
+      <h2 style="margin:0 0 6px;">YAY 🎉</h2>
+      <div id="details"></div>
+      <p style="margin:10px 0 0;">Text me: “VALENTINE ✅” so I can screenshot this and brag.</p>
+    </div>
+
+    <div class="tiny">Made with 💻 + questionable button design.</div>
+  </div>
+
+  <script>
+    const result = document.getElementById("result");
+    const details = document.getElementById("details");
+    const noBtn = document.getElementById("no");
+
+    function celebrate(extra) {
+      result.classList.add("show");
+      details.textContent = extra || "Officially adorable. Officially my Valentine.";
+      // quick confetti-ish effect using emojis
+      let i = 0;
+      const rain = setInterval(() => {
+        const s = document.createElement("div");
+        s.textContent = ["💘","💖","✨","🌹","🥰"][Math.floor(Math.random()*5)];
+        s.style.position = "fixed";
+        s.style.left = Math.random()*100 + "vw";
+        s.style.top = "-20px";
+        s.style.fontSize = (16 + Math.random()*22) + "px";
+        s.style.transition = "top 1.6s linear, transform 1.6s linear";
+        document.body.appendChild(s);
+        requestAnimationFrame(() => {
+          s.style.top = "110vh";
+          s.style.transform = "rotate(" + (Math.random()*360) + "deg)";
+        });
+        setTimeout(() => s.remove(), 1700);
+        if (++i > 35) clearInterval(rain);
+      }, 40);
+    }
+
+    document.getElementById("yes").onclick = () => celebrate();
+    document.getElementById("yes2").onclick = () => celebrate("Enthusiasm noted and appreciated 😌💅");
+
+    // “No” button dodges the cursor (playful, not mean)
+    noBtn.addEventListener("mouseenter", () => {
+      const card = document.querySelector(".card").getBoundingClientRect();
+      const btn = noBtn.getBoundingClientRect();
+      const maxX = card.width - btn.width - 20;
+      const maxY = 160; // keep it near the button area
+      const x = 10 + Math.random() * maxX;
+      const y = 110 + Math.random() * maxY;
+      noBtn.style.position = "absolute";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+  </script>
+</body>
+</html>
+
