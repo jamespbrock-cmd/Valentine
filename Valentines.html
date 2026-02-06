@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Valentine?&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">           </span>display:flex; min-height:100vh; align-items:center; justify-content:center;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">           </span>background: linear-gradient(135deg, #ffe0ec, #fff7d6); margin:0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card { background: rgba(255,255,255,0.85); padding: 28px; border-radius: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(0,0,0,0.12); max-width: 520px; width: 92%; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1 { margin: 0 0 10px; font-size: 28px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>p { margin: 8px 0 18px; font-size: 16px; line-height: 1.35; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btns { display:flex; gap:10px; flex-wrap:wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button { border:0; padding: 12px 16px; border-radius: 12px; cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>font-weight:700; font-size: 15px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.yes { background:#ff4d6d; color:white; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.yes2 { background:#ff8fab; color:#3a0010; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.no { background:#f1f3f5; color:#333; position: relative; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.result { margin-top: 16px; padding: 12px; border-radius: 12px; display:none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.result.show { display:block; background:#e6ffed; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.tiny { font-size: 12px; color:#666; margin-top:14px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 id="title"&gt;Hey you 🫶&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p id="msg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>I know we’re long-distance, so I made you a tiny button-powered moment:</p>
+<p class="p1"><span class="Apple-converted-space">      </span>will you be my Valentine?</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="btns"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="yes" id="yes"&gt;Yes 💖&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="yes2" id="yes2"&gt;Yes (with enthusiasm) ✨&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="no" id="no"&gt;No&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="result" id="result"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 style="margin:0 0 6px;"&gt;YAY 🎉&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="details"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p style="margin:10px 0 0;"&gt;Text me: “VALENTINE ✅” so I can screenshot this and brag.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tiny"&gt;Made with 💻 + questionable button design.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const result = document.getElementById("result");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const details = document.getElementById("details");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const noBtn = document.getElementById("no");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function celebrate(extra) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>result.classList.add("show");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>details.textContent = extra || "Officially adorable. Officially my Valentine.";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// quick confetti-ish effect using emojis</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let i = 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const rain = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const s = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>s.textContent = ["💘","💖","✨","🌹","🥰"][Math.floor(Math.random()*5)];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>s.style.position = "fixed";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>s.style.left = Math.random()*100 + "vw";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>s.style.top = "-20px";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>s.style.fontSize = (16 + Math.random()*22) + "px";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>s.style.transition = "top 1.6s linear, transform 1.6s linear";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.body.appendChild(s);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>requestAnimationFrame(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>s.style.top = "110vh";</p>
+<p class="p1"><span class="Apple-converted-space">          </span>s.style.transform = "rotate(" + (Math.random()*360) + "deg)";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; s.remove(), 1700);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (++i &gt; 35) clearInterval(rain);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}, 40);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("yes").onclick = () =&gt; celebrate();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("yes2").onclick = () =&gt; celebrate("Enthusiasm noted and appreciated 😌💅");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// “No” button dodges the cursor (playful, not mean)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>noBtn.addEventListener("mouseenter", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const card = document.querySelector(".card").getBoundingClientRect();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const btn = noBtn.getBoundingClientRect();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const maxX = card.width - btn.width - 20;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const maxY = 160; // keep it near the button area</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const x = 10 + Math.random() * maxX;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const y = 110 + Math.random() * maxY;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>noBtn.style.position = "absolute";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>noBtn.style.left = x + "px";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>noBtn.style.top = y + "px";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
